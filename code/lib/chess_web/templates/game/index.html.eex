@@ -1,0 +1,37 @@
+<h2><%= gettext "Listing games" %></h2>
+
+<table class="games-list">
+  <tbody>
+    <%= for game <- @games do %>
+      <tr class="<%= turn_class(@conn, game) %>">
+        <td>
+          <span class="games-list__player-indicator">
+            <img src="/static/images/pawn_<%= player_colour(@conn, game) %>.svg">
+          </span>
+          <%= link gettext(
+                "Game with %{name}",
+                name: opponent(game, current_user(@conn).id).name
+              ),
+                to: game_path(@conn, :show, game),
+                class: "btn btn-default btn-xs" %>
+        </td>
+        <td>
+          <%= state(@conn, game) %>
+        </td>
+        <td>
+          <%= won_lost(@conn, game) %>
+        </td>
+        <td class="text-right">
+          <%= link gettext("Delete"),
+                to: game_path(@conn, :delete, game),
+                method: :delete,
+                data: [confirm: gettext("Are you sure?")] %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<p>
+  <%= link gettext("New game"), to: game_path(@conn, :new), class: "button" %>
+</p>

@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+  <%= render "_head.html", conn: @conn %>
+
+  <body>
+    <%= render "_header.html", conn: @conn %>
+    <%= render "_alerts.html", conn: @conn %>
+
+    <main role="main">
+      <div class="container">
+        <%= @inner_content %>
+      </div>
+    </main>
+
+    <%= render "_scripts.html", conn: @conn, token: assigns[:user_token] %>
+  </body>
+</html>

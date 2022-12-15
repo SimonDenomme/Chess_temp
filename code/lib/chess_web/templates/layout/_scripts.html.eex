@@ -1,0 +1,2 @@
+<script>window.userToken = "<%= @token %>";</script>
+<script src="<%= static_path(@conn, "/static/app.js") %>"></script>

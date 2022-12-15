@@ -1,0 +1,13 @@
+#!/usr/bin/env bash
+
+echo "Installing Erlang"
+source /dev/stdin <<< "$(curl -sSL https://raw.githubusercontent.com/codeship/scripts/master/languages/erlang.sh)"
+
+echo "Installing Elixir"
+source /dev/stdin <<< "$(curl -sSL https://raw.githubusercontent.com/codeship/scripts/master/languages/elixir.sh)"
+
+echo "Installing PhantomJS"
+curl -sSL https://raw.githubusercontent.com/codeship/scripts/master/packages/phantomjs.sh | bash -s
+
+echo "Installing NodeJS"
+nvm install $NODE_VERSION

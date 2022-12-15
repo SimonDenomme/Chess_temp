@@ -1,0 +1,9 @@
+#!/usr/bin/env bash
+
+echo "Installing Phoenix dependencies"
+mix local.hex --force
+mix local.rebar --force
+
+export MIX_ENV=test
+mix deps.get
+mix deps.compile

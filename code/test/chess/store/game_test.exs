@@ -29,8 +29,8 @@ defmodule Chess.Store.GameTest do
     test "game cannot be saved if the user or opponent do not exist" do
       attrs = %{
         board: %{},
-        user_id: 1,
-        opponent_id: 2,
+        user_id: 500,
+        opponent_id: 501,
         turn: "white"
       }
       changeset = Game.changeset(%Game{}, attrs)

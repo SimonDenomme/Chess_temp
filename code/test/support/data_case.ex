@@ -1,15 +1,14 @@
 defmodule Chess.DataCase do
   @moduledoc """
-  This module defines the test case to be used by
-  model tests.
+  Ce module définit le cas de test à utiliser par le modèle de test.
 
-  You may define functions here to be used as helpers in
-  your model tests. See `errors_on/2`'s definition as reference.
+  Vous pouvez définir ici des fonctions à utiliser comme aides dans
+  vos essais sur le modèle. Voir la définition de `errors_on/2` pour référence.
 
-  Finally, if the test case interacts with the database,
-  it cannot be async. For this reason, every test runs
-  inside a transaction which is reset at the beginning
-  of the test unless the test case is marked as async.
+  Enfin, si le cas de test interagit avec la base de données,
+  il ne peut pas être asynchrone. Pour cette raison, chaque test s'exécute
+  à l'intérieur d'une transaction qui est réinitialisée au début
+  du test à moins que le cas de test ne soit marqué comme asynchrone.
   """
 
   use ExUnit.CaseTemplate
@@ -36,22 +35,22 @@ defmodule Chess.DataCase do
   end
 
   @doc """
-  Helper for returning list of errors in a struct when given certain data.
+  Aide pour renvoyer la liste des erreurs dans une structure lorsqu'on lui donne certaines données.
 
-  ## Examples
+  ## Exemples
 
-  Given a User schema that lists `:name` as a required field and validates
-  `:password` to be safe, it would return:
+  Étant donné un schéma utilisateur qui répertorie `: name` comme champ obligatoire et valide
+   `:password` pour être sûr, il renverrait :
 
       iex> errors_on(%User{}, %{password: "password"})
       [password: "is unsafe", name: "is blank"]
 
-  You could then write your assertion like:
+  Vous pourriez alors écrire votre affirmation comme suit :
 
       assert {:password, "is unsafe"} in errors_on(%User{}, %{password: "password"})
 
-  You can also create the changeset manually and retrieve the errors
-  field directly:
+  Vous pouvez également créer le changeset manuellement et récupérer les erreurs
+   champ directement :
 
       iex> changeset = User.changeset(%User{}, password: "password")
       iex> {:password, "is unsafe"} in changeset.errors

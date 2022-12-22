@@ -2,7 +2,7 @@ defmodule ChessWeb.Endpoint do
   use Phoenix.Endpoint, otp_app: :chess
 
   if sandbox = Application.get_env(:chess, :sandbox) do
-    plug(Phoenix.Ecto.SQL.Sandbox, sandbox: sandbox)
+    plug Phoenix.Ecto.SQL.Sandbox, sandbox: sandbox
   end
 
   socket("/socket", ChessWeb.UserSocket)

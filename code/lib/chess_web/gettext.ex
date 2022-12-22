@@ -1,24 +1,24 @@
 defmodule ChessWeb.Gettext do
   @moduledoc """
-  A module providing Internationalization with a gettext-based API.
+  Un module fournissant l'internationalisation avec une API basée sur gettext.
 
-  By using [Gettext](https://hexdocs.pm/gettext),
-  your module gains a set of macros for translations, for example:
+   En utilisant [Gettext](https://hexdocs.pm/gettext),
+   le module gagne un ensemble de macros pour les traductions, par exemple :
 
-      import Chess.Gettext
+       import Chess.Gettext
 
-      # Simple translation
-      gettext "Here is the string to translate"
+       # Traduction simple
+       gettext "Voici la chaîne à traduire"
 
-      # Plural translation
-      ngettext "Here is the string to translate",
-               "Here are the strings to translate",
-               3
+       # Traduction multiple
+       ngettext "Voici la chaîne à traduire",
+                "Voici les chaînes à traduire",
+                3
 
-      # Domain-based translation
-      dgettext "errors", "Here is the error message to translate"
+       # Traduction basée sur le domaine
+       dgettext "errors", "Voici le message d'erreur à traduire"
 
-  See the [Gettext Docs](https://hexdocs.pm/gettext) for detailed usage.
+   Voir [Gettext Docs](https://hexdocs.pm/gettext) pour une utilisation détaillée.
   """
   use Gettext, otp_app: :chess
 end

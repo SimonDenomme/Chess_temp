@@ -1,8 +1,8 @@
 # Épreuve terminale de cours 420-3DG-HY
 
 Simon Dénommé<br/>
-Le projet est un jeu multijoueur de Tron utilisant Phoenix et LiveView <br/>
-https://github.com/ChristopheBelpaire/tron
+Le projet est un jeu multijoueur d'échec utilisant Phoenix, LiveView et Ecto<br/>
+https://github.com/danbee/chess
 
 ## But du projet
 

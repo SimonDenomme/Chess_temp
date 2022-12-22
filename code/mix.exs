@@ -11,7 +11,15 @@ defmodule Chess.Mixfile do
       build_embedded: Mix.env() == :prod,
       start_permanent: Mix.env() == :prod,
       aliases: aliases(),
-      deps: deps()
+      deps: deps(),
+      # Docs
+      name: "ChessDocumentation",
+      description: "Chess Documentation",
+      docs: [
+        extras: ["README.md"],
+        language: "fr",
+        output: "../doc"
+      ]
     ]
   end
 
@@ -41,6 +49,7 @@ defmodule Chess.Mixfile do
       {:dart_sass, "~> 0.4", runtime: Mix.env() == :dev},
       {:ecto_sql, "~> 3.0"},
       {:esbuild, "~> 0.3", runtime: Mix.env() == :dev},
+      {:ex_doc, "~> 0.27", only: :dev, runtime: false},
       {:formulator, "~> 0.4.0"},
       {:gettext, "~> 0.16.0"},
       {:guardian, "~> 1.0"},
@@ -53,7 +62,7 @@ defmodule Chess.Mixfile do
       {:plug_cowboy, "~> 2.1"},
       {:postgrex, ">= 0.15.0"},
       {:secure_random, "~> 0.5"},
-      {:wallaby, "~> 0.28.0", [runtime: false, only: :test]}
+      {:wallaby, "~> 0.30.0", [runtime: false, only: :test]}
     ]
   end
 
@@ -67,7 +76,7 @@ defmodule Chess.Mixfile do
     [
       "ecto.setup": ["ecto.create", "ecto.migrate", "run priv/repo/seeds.exs"],
       "ecto.reset": ["ecto.drop", "ecto.setup"],
-      test: ["ecto.create --quiet", "ecto.migrate", "test"],
+      test: ["esbuild default", "ecto.create --quiet", "ecto.migrate", "test"],
       "assets.deploy": [
         "esbuild default --minify",
         "sass default --no-source-map --style=compressed",

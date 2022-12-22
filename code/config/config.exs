@@ -11,6 +11,9 @@ config :phoenix, :json_library, Jason
 config :chess,
   ecto_repos: [Chess.Repo]
 
+config :chess, Chess.Repo,
+  show_sensitive_data_on_connection_error: true
+
 # Configures the endpoint
 config :chess, ChessWeb.Endpoint,
   url: [host: "localhost"],

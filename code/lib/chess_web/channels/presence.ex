@@ -1,15 +1,15 @@
 defmodule ChessWeb.Presence do
   @moduledoc """
-  Provides presence tracking to channels and processes.
+  Fournit un suivi de présence sur les canaux et les processus.
 
-  See the [`Phoenix.Presence`](http://hexdocs.pm/phoenix/Phoenix.Presence.html)
-  docs for more details.
+   Voir [`Phoenix.Presence`](http://hexdocs.pm/phoenix/Phoenix.Presence.html)
+   docs pour plus de détails.
 
-  ## Usage
+   ## Utilisation
 
-  Presences can be tracked in your channel after joining:
+   Les présences peuvent être suivies dans votre chaîne après avoir rejoint :
 
-      defmodule Chess.MyChannel do
+       defmodule Chess.MyChannel do
         use ChessWeb, :channel
         alias Chess.Presence
 
@@ -27,33 +27,33 @@ defmodule ChessWeb.Presence do
         end
       end
 
-  In the example above, `Presence.track` is used to register this
-  channel's process as a presence for the socket's user ID, with
-  a map of metadata. Next, the current presence list for
-  the socket's topic is pushed to the client as a `"presence_state"` event.
+   Dans l'exemple ci-dessus, `Presence.track` est utilisé pour enregistrer ce
+   processus du canal en tant que présence pour l'ID utilisateur du socket, avec
+   une carte des métadonnées. Ensuite, la liste de présence actuelle pour
+   le sujet du socket est transmis au client en tant qu'événement `"presence_state"`.
 
-  Finally, a diff of presence join and leave events will be sent to the
-  client as they happen in real-time with the "presence_diff" event.
-  See `Phoenix.Presence.list/2` for details on the presence datastructure.
+   Enfin, un diff des événements de présence et de départ sera envoyé au
+   client au fur et à mesure qu'ils se produisent en temps réel avec l'événement "presence_diff".
+   Voir `Phoenix.Presence.list/2` pour plus de détails sur la structure de données de présence.
 
-  ## Fetching Presence Information
+   ## Récupération des informations de présence
 
-  The `fetch/2` callback is triggered when using `list/1`
-  and serves as a mechanism to fetch presence information a single time,
-  before broadcasting the information to all channel subscribers.
-  This prevents N query problems and gives you a single place to group
-  isolated data fetching to extend presence metadata.
+   Le rappel `fetch/2` est déclenché lors de l'utilisation de `list/1`
+   et sert de mécanisme pour récupérer les informations de présence une seule fois,
+   avant de diffuser l'information à tous les abonnés de la chaîne.
+   Cela évite les problèmes de requête N et vous donne un seul endroit pour regrouper
+   récupération de données isolées pour étendre les métadonnées de présence.
 
-  The function receives a topic and map of presences and must return a
-  map of data matching the Presence datastructure:
+   La fonction reçoit un sujet et une carte des présences et doit retourner un
+   carte des données correspondant à la structure de données Présence :
 
-      %{"123" => %{metas: [%{status: "away", phx_ref: ...}],
-        "456" => %{metas: [%{status: "online", phx_ref: ...}]}
+       %{"123" => %{metas : [%{status : "away", phx_ref : ...}],
+         "456" => %{metas : [%{status : "online", phx_ref : ...}]}
 
-  The `:metas` key must be kept, but you can extend the map of information
-  to include any additional information. For example:
+   La clé `:metas` doit être conservée, mais vous pouvez étendre la carte des informations
+   pour inclure toute information supplémentaire. Par exemple:
 
-      def fetch(_topic, entries) do
+       def fetch(_topic, entries) do
         users = entries |> Map.keys() |> Accounts.get_users_map(entries)
         # => %{"123" => %{name: "User 123"}, "456" => %{name: nil}}
 
@@ -62,12 +62,13 @@ defmodule ChessWeb.Presence do
         end
       end
 
-  The function above fetches all users from the database who
-  have registered presences for the given topic. The fetched
-  information is then extended with a `:user` key of the user's
-  information, while maintaining the required `:metas` field from the
-  original presence data.
+   La fonction ci-dessus récupère tous les utilisateurs de la base de données qui
+   ont enregistré des présences pour le sujet donné. Le récupéré
+   les informations sont ensuite étendues avec une clé `:user` de l'utilisateur
+   informations, tout en conservant le champ `:metas` requis de la
+   données de présence d'origine.
   """
-  use Phoenix.Presence, otp_app: :chess,
-                        pubsub_server: Chess.PubSub
+  use Phoenix.Presence,
+    otp_app: :chess,
+    pubsub_server: Chess.PubSub
 end

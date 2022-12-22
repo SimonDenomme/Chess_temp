@@ -1,6 +1,6 @@
 defmodule Chess.Auth do
   @moduledoc """
-  The Auth context.
+  Le contexte Auth est responsable de la gestion des utilisateurs et de l'authentification.
   """
 
   import Ecto.Query, warn: false

@@ -14,12 +14,22 @@ config :logger, level: :warn
 
 config :chess, Chess.Mailer, adapter: Bamboo.TestAdapter
 
+# Configure Wallaby
+config :wallaby,
+  driver: Wallaby.Chrome,
+  otp_app: :chess,
+  screenshot_on_failure: true,
+  screenshot_dir: "test/screenshots",
+  # chromedriver: [ path: "C:/Program Files (x86)/Google/Chrome/Application/chromedriver.exe"]
+  # chromedriver: [ path: "D:Simon/Ecole/Session22A/Distribué/TP/chess/code/test/chrome/chromedriver.exe"]
+  chromedriver: [path: "test/chrome/chromedriver.exe"]
+
 # Configure your database
 config :chess, Chess.Repo,
   adapter: Ecto.Adapters.Postgres,
-  database: "chess_test",
+  database: "chess_dev",
   hostname: "localhost",
+  username: "postgres",
+  password: "postgres",
   port: System.get_env("POSTGRES_PORT") || "5432",
   pool: Ecto.Adapters.SQL.Sandbox
-
-config :wallaby, driver: Wallaby.Chrome

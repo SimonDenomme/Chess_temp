@@ -9,17 +9,20 @@ defmodule Chess.AuthTest do
     @valid_attrs %{
       name: "some name",
       email: "some email",
-      password: "some password"
+      password: "some password",
+      password_hash: "some password"
     }
     @update_attrs %{
       name: "some name",
       email: "some updated email",
-      password: "some updated password"
+      password: "some updated password",
+      password_hash: "some updated password"
     }
     @invalid_attrs %{
       name: nil,
       email: nil,
-      password: nil
+      password: nil,
+      password_hash: nil
     }
 
     def user_fixture(attrs \\ %{}) do
@@ -78,12 +81,12 @@ defmodule Chess.AuthTest do
       user_fixture(email: "link@hyrule.com", password: "eyeofsheikah")
       assert {:error, message} =
         Auth.authenticate_user("link@hyrule.com", "shadowtemple")
-      assert message == "invalid password"
+      assert message == :invalid_password
     end
 
     test "authenticate_user/1 returns true on correct password " do
       user = user_fixture(email: "link@hyrule.com", password: "eyeofsheikah")
-      assert {:ok, ^user} =
+      assert {:ok, user} =
         Auth.authenticate_user("link@hyrule.com", "eyeofsheikah")
     end
   end

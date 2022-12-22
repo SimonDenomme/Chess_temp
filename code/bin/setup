@@ -1,7 +1,5 @@
-#!/usr/bin/env sh
-
 echo "Removing previous build artifacts"
-rm -rf deps _build
+rd /s /q deps _build
 
 echo "Installing dependencies and compiling"
 mix local.hex --force
@@ -9,13 +7,12 @@ mix deps.get
 mix deps.compile
 mix compile
 
-# Set up database
 echo "Setting up the database"
 mix ecto.create
 mix ecto.migrate
 
-# Grab JS dependencies from NPM
 echo "Installing js dependencies"
 cd assets
-yarn install
+npm install yarn
+npm install esbuild
 cd ..

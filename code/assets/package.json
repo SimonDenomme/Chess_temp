@@ -3,13 +3,13 @@
   "description": " ",
   "license": "MIT",
   "scripts": {
-    "deploy": "cd .. && mix assets.deploy && rm -f _build/esbuild"
+    "deploy": "cd .. && mix assets.deploy && rd /s /q _build/esbuild"
   },
   "dependencies": {
     "@babel/polyfill": "^7.12.1",
     "axios": "^0.21.0",
     "classnames": "^2.3.1",
-    "esbuild": "^0.14.21",
+    "esbuild": "^0.14.54",
     "gettext.js": "^1.0.0",
     "immutable": "^3.8.2",
     "lodash": "^4.17.21",
@@ -20,7 +20,8 @@
     "react-redux": "^7.2.4",
     "redux": "^4.1.0",
     "redux-watch": "^1.2.0",
-    "url-loader": "^4.1.1"
+    "url-loader": "^4.1.1",
+    "yarn": "^1.22.19"
   },
   "devDependencies": {
     "css-loader": "^5.2.6",

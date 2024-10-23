@@ -6,7 +6,7 @@ https://github.com/danbee/chess
 
 ## But du projet
 
-Jouer à un jeu en respectant les règles traditionnels de Tron tout en permettant que d'autre joueur puisse intéragir au même moment.
+Jouer à un jeu d'échec tout en permettant que d'autre joueur puisse intéragir au même moment.
 
 ## Énoncé de l'Épreuve trminale de cours (ÉTC)
 
